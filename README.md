@@ -1,174 +1,57 @@
-![Saleor Platform](https://user-images.githubusercontent.com/249912/71523206-4e45f800-28c8-11ea-84ba-345a9bfc998a.png)
-
-<div align="center">
-  <h1>Saleor Platform</h1>
-</div>
-
-<div align="center">
-  <p>Run all Saleor services from one repository.</p>
-</div>
-
-<div align="center">
-  <a href="https://saleor.io/">🏠 Website</a>
-  <span> • </span>
-  <a href="https://docs.saleor.io/docs/3.x/">📚 Docs</a>
-  <span> • </span>
-  <a href="https://saleor.io/blog/">📰 Blog</a>
-  <span> • </span>
-  <a href="https://twitter.com/getsaleor">🐦 Twitter</a>
-</div>
-
-<div align="center">
-  <a href="https://githubbox.com/saleor/saleor-platform">🔎 Explore Code</a>
-</div>
-
-## About
-
-### What is Saleor Platform?
-
-Saleor Platform is the easiest way to start local development with all the major Saleor services:
-- [Core GraphQL API](https://github.com/saleor/saleor)
-- [Dashboard](https://github.com/saleor/saleor-dashboard)
-- Mailpit (Test email interface)
-- Jaeger (APM)
-- The necessary databases, cache, etc.
-
-*Keep in mind this repository is for local development only and is not meant to be deployed in any production environment! If you're not a developer and just want to try out Saleor you can check our [live demo](https://demo.saleor.io/).*
-
-## Requirements
-1. [Docker](https://docs.docker.com/install/)
-
-## How to clone the repository?
-
-To clone the repository, run the following command
-
-```
-git clone https://github.com/saleor/saleor-platform.git
-```
-
-## How to run it?
-
-1. We are using shared folders to enable live code reloading. Without this, Docker Compose will not start:
-    - Windows/MacOS: Add the cloned `saleor-platform` directory to Docker shared directories (Preferences -> Resources -> File sharing).
-    - Windows/MacOS: Make sure that in Docker preferences you have dedicated at least 5 GB of memory (Preferences -> Resources -> Advanced).
-    - Linux: No action is required, sharing is already enabled and memory for the Docker engine is not limited.
-
-2. Go to the cloned directory:
+# ISEC6000_Assignment1_Task2
+ ISEC6000_Assignment1_Task2
+# Task_2.  Microservices Architecture and Deployment
+## Part-1. Follow the step-by-step guidelines outlined in the Saleor platform repository to effectively run a Saleor stack enriched with sample data. 
+## The following steps are referenced from saleor platform's Readme file
+ Step 1. Create a personal account on Github.com and proceed to fork the Saleor platform repository\
+   ![4aa397aa1ff8aec9b2b156fb360051b](https://github.com/krisliuqz/isec6000-assignment1-task2/assets/54123573/d8faf5ab-f7b0-40a6-818b-bde71c37cdf0)
+Step 2. Using git clone to download the repository, then using cd go to the cloned directory 
 ```shell
-cd saleor-platform
+git clone https://github.com/krisliuqz/saleor-platform.git
+cd saleor/platform
 ```
-
-3. Build the application:
-```shell
-docker compose build
-```
-
-4. Apply Django migrations:
+![34a593e2632f14ad87a7ba8ba5c693b](https://github.com/krisliuqz/isec6000-assignment1-task2/assets/54123573/113decd5-350b-471b-9f7c-3790748e7372)
+Step 3. Build the application and then Apply Django migrations
 ```shell
 docker compose run --rm api python3 manage.py migrate
 ```
-
-5. Populate the database with example data and create the admin user:
+![0be8fedb5cc1f9ca9e276619e74c1bb](https://github.com/krisliuqz/isec6000-assignment1-task2/assets/54123573/361a3e01-e6be-4d5e-8cbb-0a24c7d5e6cf)
+Step 4. Populate the database with example data and create the admin user
 ```shell
 docker compose run --rm api python3 manage.py populatedb --createsuperuser
 ```
-*Note that `--createsuperuser` argument creates an admin account for `admin@example.com` with the password set to `admin`.*
+![a19108063eeabb139721f44528b83a1](https://github.com/krisliuqz/isec6000-assignment1-task2/assets/54123573/35e01a46-68ab-4f58-b971-1ca4788f84f0)
 
-6. Run the application:
+*Note that `--createsuperuser` argument creates an admin account for `admin@example.com` with the password set to `admin`.*\
+Step 5. Run the application:
 ```shell
 docker compose up
 ```
-
+![ef2e70018bb08a2ec3fb6a731008154](https://github.com/krisliuqz/isec6000-assignment1-task2/assets/54123573/1d172059-5786-4727-9655-6731d76429e8)
+## Part-2. Tailor the Compose file to ensure optimal functionality:
+### a. Configure the React Storefront to operate on port 3009.
+### b. Assign port 9003 for the Saleor Dashboard.
+### c. Initiate the stack and verify the successful launch of all services:
+  ### Saleor React Storefront: Accessible at http://<Your-Linux-Server-IP>:3009.
+  ### Saleor Dashboard: Reachable via http://<Your-Linux-Server-IP>:9003.
+  Step 1. open docker-compose.yml and change the Saleor React Storefront port number to 3009 and Saleor Dashboard port number to 9003.
+  ![4f89a0ca3e8bb0fccbc8272ee66ce24](https://github.com/krisliuqz/isec6000-assignment1-task2/assets/54123573/f609e892-4017-4a01-9a84-2a0353dc11a9)
+ Step 2. Save the file and run docker compose up
+ ![071730a5e2accaf613311256d479f54](https://github.com/krisliuqz/isec6000-assignment1-task2/assets/54123573/cd80cd73-e637-4a44-b8dd-de48a58c6681)
+ Step 3. change the port number in the web preview to check whether the website is on
+ ![image](https://github.com/krisliuqz/isec6000-assignment1-task2/assets/54123573/d4a784a1-4cc8-4b8c-a922-f3ad918b5c11)\
+ Step 4. Enter localhost:9003  and localhost:3009 in URL you will see the websites
+ ![image](https://github.com/krisliuqz/isec6000-assignment1-task2/assets/54123573/6f5cc21b-5d0e-4afc-91ae-ff31b579b7bb)
+![e87d35bed45540b5993cdf4fe59a859](https://github.com/krisliuqz/isec6000-assignment1-task2/assets/54123573/52e3d77c-1725-45f0-aa2a-3adbe0df3cc9)
 ## Where is the application running?
-- Saleor Core (API) - http://localhost:8000
-- Saleor Dashboard - http://localhost:9000
-- Jaeger UI (APM) - http://localhost:16686
-- Mailpit (Test email interface) - http://localhost:8025
-
-# Troubleshooting
-
-- [How to solve issues with lack of available space or build errors after an update](#how-to-solve-issues-with-lack-of-available-space-or-build-errors-after-an-update)
-- [How to run application parts?](#how-to-run-application-parts)
-- [How to update the subprojects to the newest versions?](#how-to-update-the-subprojects-to-the-newest-versions)
-
-## How to solve issues with lack of available space or build errors after an update
-
-Most of the time both issues can be solved by cleaning up space taken by old containers. After that, we build again whole platform. 
-
-
-1. Make sure docker stack is not running
+- Saleor storefront - http://localhost:3009
+- Saleor Dashboard - http://localhost:9003
+## Part-3. Commit your modifications and push them to the forked repository, appending the tag isec6000-assignment1
+Step 1. Using command git add to stage file for commit and commit by using git commit
 ```shell
-docker compose stop
+git add docker-compose.yml
+git commit -m"isec6000-assignment1"
 ```
-
-2. Remove existing volumes
-
-**Warning!** Proceeding will remove also your database container! If you need existing data, please remove only services that cause problems! https://docs.docker.com/compose/reference/rm/
-```shell
-docker compose rm
-```
-
-3. Build fresh containers 
-```shell
-docker compose build
-```
-
-4. Now you can run a fresh environment using commands from `How to run it?` section. Done!
-
-### Still no available space
-
-If you are getting issues with lack of available space, consider pruning your docker cache:
-
-**Warning!** This will remove:
-  - all stopped containers
-  - all networks not used by at least one container
-  - all dangling images
-  - all dangling build cache 
-  
-  More info: https://docs.docker.com/engine/reference/commandline/system_prune/
-  
-<details><summary>I've been warned</summary>
-<p>
-
-```shell
-docker system prune
-```
-
-</p>
-</details>
-
-### Issues with migrations after changing the versions - resetting the database
-
-Please submit an issue ticket if you spot issues with database migrations during the version update. 
-
-When testing developer releases or making local changes, you might end up in a state where you would like to reset the database completely. Since its state is persisted in the mounted volume, you'll need to use a dedicated command.
-
-**Warning!** This command will remove all data already stored in the database.
-
-<details><summary>I've been warned</summary>
-<p>
-
-```shell
-docker compose down --volumes db
-```
-
-</p>
-</details>
-   
-## How to run application parts?
-  - `docker compose up api worker` for backend services only
-  - `docker compose up` for backend and frontend services
-
-## Feedback
-
-If you have any questions or feedback, do not hesitate to contact us via [GitHub Discussions](https://github.com/saleor/saleor/discussions).
-
-## License
-
-Disclaimer: Everything you see here is open and free to use as long as you comply with the [license](https://github.com/saleor/saleor-platform/blob/main/LICENSE). There are no hidden charges. We promise to do our best to fix bugs and improve the code.
-
-Some situations do call for extra code; we can cover exotic use cases or build you a custom e-commerce appliance.
-
-#### Crafted with ❤️ by [Saleor Commerce](https://saleor.io/)
-
-hello@saleor.io
+![7a1389652442faf995256615ffd2180](https://github.com/krisliuqz/isec6000-assignment1-task2/assets/54123573/c88c3c08-eafc-41cf-939c-9d6553a9f740)
+Step 2. push the commit to the main branch
+![9ac02135d362398cd0ff1f781dafd7c](https://github.com/krisliuqz/isec6000-assignment1-task2/assets/54123573/d86cb1a3-8fb0-493b-ae99-f08b41d3209f)
